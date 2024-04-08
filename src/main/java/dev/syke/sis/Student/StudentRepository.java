@@ -14,8 +14,8 @@ public interface StudentRepository extends JpaRepository<Student, Long>{
     @Query("SELECT s FROM Student s WHERE s.name LIKE %:search% OR s.lastName LIKE %:search%")
     Page<Student> findBySearch(String search, Pageable pageable);
 
-    Page<Student> findAll(Pageable pageable);
-
     @Query("SELECT s FROM Student s WHERE s.email = ?1")
     Optional<Student> findStudentByEmail(String email);
+
+    Page<Student> findAll(Pageable pageable);
 }
